@@ -1,5 +1,5 @@
 #!/bin/bash
-LOG_FILE="$HOME/scripts-lab/health.log"
+LOG_FILE="$HOME/Infrastructure-Lab/monitoring/health.log"
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 THRESHOLD=80
 
