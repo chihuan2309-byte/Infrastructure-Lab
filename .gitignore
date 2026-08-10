@@ -1,6 +1,6 @@
 venv/
-  *.env
-  config/servers.json
-  *.log
-  __pycache__/
-  *.pyc
+*.env
+config/servers.json
+*.log
+__pycache__/
+*.pyc
