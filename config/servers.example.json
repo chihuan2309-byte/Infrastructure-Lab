@@ -1,0 +1,16 @@
+﻿[
+  {
+    "name": "test-server-01",
+    "host": "192.168.1.10",
+    "port": 22,
+    "user": "your_ssh_user",
+    "key_path": "~/.ssh/ops_automation"
+  },
+  {
+    "name": "test-server-02",
+    "host": "192.168.1.11",
+    "port": 22,
+    "user": "your_ssh_user",
+    "key_path": "~/.ssh/ops_automation"
+  }
+]
