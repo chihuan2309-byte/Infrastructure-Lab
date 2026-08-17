@@ -4,7 +4,7 @@ TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 THRESHOLD=80
 
 # Lấy CPU usage (lấy % đang dùng = 100 - % idle)
-CPU_IDLE=$(top -bn1 | grep "%Cpu(s)" | awk '{print $8}')
+CPU_IDLE=$(top -bn1 | grep -oP '[0-9.]+(?=\s*id)')
 CPU_USAGE=$(echo "100 - $CPU_IDLE" | bc | cut -d'.' -f1)
 
 # Lấy RAM usage (%)
