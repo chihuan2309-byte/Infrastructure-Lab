@@ -37,8 +37,8 @@ This repo supports the operation of my [IT Asset Manager](#) app and other homel
 
 _(Updated as scripts are added)_
 
-- `backup/backup_db.sh` — backs up SQLite database, rotates backups older than 7 days
-- `monitoring/health_check.sh` — checks CPU/RAM/disk usage, logs warnings
+- `backup/backup_db.sh` — backs up SQLite database, sync with Gdrive use Rclone, rotates backups older than 7 days, alerts via Telegram
+- `monitoring/health_check.sh` — checks CPU/RAM/disk usage, logs warnings, alerts via Telegram
 - `monitoring/uptime_monitor.py` — checks app uptime, alerts via Telegram
 - `ssh-automation/check_disk_multi_server.py` — checks disk usage across multiple servers via SSH
 
