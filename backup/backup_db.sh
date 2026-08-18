@@ -6,7 +6,6 @@ TIMESTAMP=$(date '+%Y%m%d_%H%M%S')
 BACKUP_FILE="$BACKUP_DIR/backup_${TIMESTAMP}.db"
 LOG_FILE="$HOME/Infrastructure-Lab/backup/backup.log"
 RETENTION_DAYS=7
-GDRIVE_REMOTE="Gdrivebackup:infrastructure-lab-backups"
 
 # Load Telegram credentials
 source "$HOME/Infrastructure-Lab/.env"
@@ -27,15 +26,6 @@ sudo sqlite3 "$DB_PATH" ".backup '$BACKUP_FILE'"
 if [ $? -eq 0 ] && [ -f "$BACKUP_FILE" ]; then
     gzip "$BACKUP_FILE"
     echo "$TIMESTAMP_LOG - SUCCESS: Backup created at ${BACKUP_FILE}.gz" >> "$LOG_FILE"
-
-    # Đồng bộ lên Google Drive
-    rclone copy "${BACKUP_FILE}.gz" "$GDRIVE_REMOTE" >> "$LOG_FILE" 2>&1
-    if [ $? -eq 0 ]; then
-        echo "$TIMESTAMP_LOG - SUCCESS: Synced to Google Drive" >> "$LOG_FILE"
-    else
-        echo "$TIMESTAMP_LOG - WARNING: Failed to sync to Google Drive" >> "$LOG_FILE"
-        send_telegram_alert "⚠️ [$(hostname)] Backup created locally but Google Drive sync FAILED"
-    fi
 else
     echo "$TIMESTAMP_LOG - FAILED: Backup failed" >> "$LOG_FILE"
     send_telegram_alert "🔴 [$(hostname)] Database backup FAILED at $TIMESTAMP_LOG"
